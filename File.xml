@@ -9,5 +9,6 @@
 <text>test</text>
 <text>print/n</text>
 <cut type="feed"/>
-</epos-print>
 </PrintData>
+</epos-print>
+</PrintRequestInfo>
