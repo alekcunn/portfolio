@@ -1,9 +1,13 @@
-<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
-<s:Body>
+<?xml version="1.0" encoding="utf-8"?> 
+<PrintRequestInfo Version="1.00">
 <epos-print xmlns="http://www.epson-pos.com/schemas/2011/03/epos-print">
+<Parameter>
+<devid>local_printer</devid>
+<timeout>10000</timeout> 
+</Parameter>
+<PrintData>
 <text>test</text>
 <text>print/n</text>
 <cut type="feed"/>
 </epos-print>
-</s:Body>
-</s:Envelope>
+</PrintData>
