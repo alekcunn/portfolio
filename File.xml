@@ -8,6 +8,7 @@
 <PrintData>
 <text>test</text>
 <text>print/n</text>
+<Feed unit="24"/>
 <cut type="feed"/>
 </PrintData>
 </epos-print>
