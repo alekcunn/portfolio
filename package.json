@@ -1,16 +1,26 @@
 {
-  "name": "portfolio",
-  "version": "0.0.0",
-  "private": true,
+
   "scripts": {
-    "start": "node ./bin/www"
+
+    "dev": "next dev"
+
   },
+
   "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
-    "morgan": "~1.9.1"
+
+    "next": "^15.0.2"
+
+  },
+
+  "devDependencies": {
+
+    "@types/node": "^22.8.4",
+
+    "@types/react": "^18.3.12",
+
+    "typescript": "^5.6.3"
+
   }
+
 }
+
