@@ -1,5 +1,132 @@
-body {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.main {
+    background-color: green;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    padding-top: 20px;
+  }
+  
+  .html {
+    height: 30px;
+    width: 30%;
+    background-color: red;
+  }
+  .javascript {
+    height: 30px;
+    width: 20%;
+    background-color: orange;
+  }
+  .css {
+    height: 30px;
+    width: 25%;
+    background-color: brown;
+  }
+  .python {
+    height: 30px;
+    width: 10%;
+    background-color: purple;
+  }
+
+  #img-container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .photo-of-me {
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100px;
+    width: clamp(50px, 100%, 637px);
+    max-width: 637px;
+  }
+
+  #about-me {
+    background-color: white;
+  }
+  #exp {
+    background-color: black;
+    color: white;
+  }
+  #footer {
+    text-align: center;
+    width: 100%;
+  }
+  
+  
+  
+  #image-banner {
+    overflow: hidden;
+    max-height: 490px;
+    width: 100%;
+  
+  }
+
+.navbar {
+    position: sticky;
+    top: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #5e5e5e;
+    border-radius: 20px;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style: none;
+}
+
+.navbar-brand {
+    text-decoration: none;
+    width: 8rem;
+}
+
+.nav-link {
+    display: block;
+    background: none;
+    color: #eeeeee;
+    border: 0;
+
+    padding: .5rem 1rem;
+    margin-right: 20px;
     margin: 0;
-    padding: 0;
-    background-color: aquamarine;
+
+    &:visited {
+        color: #eeeeee;
+    }
+  
+    &:hover, &:focus {
+        color: green;
+    }
+
+    &:focus-visible {
+        outline: 0;
+        box-shadow: 2px;
+    }
+}
+
+.nav-item {
+    line-height: 1.5;
+  }
+
+@media screen and (min-width: 600px) {
+    .navbar-nav {
+        flex-direction: row;
+    }
+    
+}
+
+#about-me-dropdown {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }

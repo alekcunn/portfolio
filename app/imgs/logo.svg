@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <!-- Main text with Georgia font -->
+  <text x="100" y="40" 
+        font-family="Georgia, serif" 
+        font-weight="bold" 
+        font-size="36" 
+        text-anchor="middle" 
+        fill="green">
+    K9ALK
+  </text>
+  
+  <!-- Code brackets - moved 20px further apart -->
+  <text x="5" y="40" 
+        font-family="monospace" 
+        font-size="36" 
+        fill="#64748b">{</text>
+  <text x="180" y="40" 
+        font-family="monospace" 
+        font-size="36" 
+        fill="#64748b">}</text>
+</svg>
