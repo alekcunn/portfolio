@@ -1,12 +1,16 @@
 'use client'
 
 import Logo from './imgs/logo.svg'
-import Me from '/app/imgs/me.png'
-import Image from "next/image"
+import Image from 'next/image'
+import { gsap } from 'gsap'
 
-import me from "./imgs/me.webp"
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'; 
+
+import me from "./imgs/thenewme.webp"
 
 import { useEffect, useState } from "react";
+
+import styles from 'page.module.scss'
 
 
 
@@ -14,6 +18,9 @@ export default function Home() {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [showToggle, setShowToggle] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false)
+
+    gsap.registerPlugin(ScrollTrigger);
 
 
     useEffect(() => {
@@ -30,7 +37,7 @@ export default function Home() {
 
 
         window.addEventListener('resize', handleResize);
-        handleResize(); // Initial check on load
+        handleResize(); 
 
         return () => {
             window.removeEventListener('resize', handleResize);
@@ -42,12 +49,58 @@ export default function Home() {
         setIsMenuOpen(!isMenuOpen);
     };
 
+
+    useEffect(() => {
+        const handleScroll = () => {
+          // Check if user has scrolled more than 50 pixels
+          setIsScrolled(window.scrollY > 50);
+        };
+    
+        // Add scroll event listener
+        window.addEventListener('scroll', handleScroll);
+    
+        // Cleanup event listener
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
+
+    useEffect(() => {
+
+
+        let tl = gsap.to('.parallax-container', { 
+          scrollTrigger: {
+            trigger: '.parallax-container',
+            scrub: 2,
+            pin: true,
+            start: 'top top', 
+            end: '+=200', 
+          },
+          
+          ease: 'none',
+        });
+      }, []);
+
     return (
         <>
-                <main className="main">
-                    <nav className="navbar mx-2 navbar-dark bg-dark fixed-top">
+                <nav className={`
+                        fixed 
+                        left-0 
+                        right-0 
+                        z-50 
+                        transition-all 
+                        duration-300 
+                        ease-in-out 
+                        bg-gray-800 
+                        text-white
+                        styles.main
+                        ${isScrolled 
+                        ? 'top-[10px] mx-4 rounded-full shadow-lg stick:top-[10px]' 
+                        : 'top-0 h-16 rounded-none'}
+                    `}>
                         <a className="navbar-brand" href="#">
-                            <Logo />
+                            {/* <Logo /> */}
+                            
                         </a>
 
                         {showToggle && (<button className="navbar-toggler" type="button" data-toggle="collapse" onClick={toggleMenu} data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,39 +125,33 @@ export default function Home() {
                                             <li><a className="dropdown-item" href="#">My dreams</a></li>
                                         </ul>
                                     </details>
-
-                                    {/* <div className="dropdown dropdown-end absolute top-4">
-                                        <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">Dropdown</div>
-                                        <ul
-                                        tabIndex={0}
-                                        className="menu dropdown-content bg-base-100 rounded-box z-[1] mt-4 w-52 p-2 shadow">
-                                        <li><a>Item 1</a></li>
-                                        <li><a>Item 2</a></li>
-                                        </ul>
-                                    </div> */}
-                                    
                                 </ul>
-                                {/* <form className="form-inline my-2 my-lg-0">
-                                    <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-                                    <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                                </form> */}
                             </div>
                             )}
                     </nav>
+                <main className="mt-16 flex">
 
-                        <div className='photo-of-me' >
-
-
-                            <img src="./imgs/me.png" alt="Your Image" className="parallax-image" />
-                        </div>
-   
                     <div className="text-center m-0" id="about-me">
                         <h1>Hi, Welcome to my home page!</h1>
                         <p className="lead">My name is Alex Cunningham, but I like to be called Alek, and aspire to be a computer scientist.</p><br />
                         <p>I have always loved computers because they made me wonder how they work. I put together a computer myself when I was 6. <br />
                             I installed the modem and had it on AOL in one day. My parents were astonished.</p><br />
                         <p>To learn more about me visit my bio!</p>
+                    
+                    
+
                     </div>
+
+                        <div className='parallax-container' >
+                            <Image 
+                                src={me} 
+                                alt="Your Image" 
+                                className="parallax-image"
+                                fill={true}
+
+                            />
+                        </div>
+   
 
                     <div className="m-0" id="exp">
                         <h3>My language experience </h3>
