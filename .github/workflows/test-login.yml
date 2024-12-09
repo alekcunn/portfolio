@@ -1,0 +1,22 @@
+
+name: Build and deploy Node.js app to Azure Web App - testapp-
+
+on:
+  workflow_dispatch:
+  
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    permissions:
+      id-token: write #This is required for requesting the JWT
+
+    steps:
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_201D5A193A6A4077A4E17E9C08DEB261 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_9F5BA5C4118F429BBD1F00B145F59E6A }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_E8EDF35BB34948D58B5AC070B13447BF }}
